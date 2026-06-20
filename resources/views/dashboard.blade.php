@@ -1,18 +1,26 @@
 <x-layouts::app :title="__('Dashboard')">
-    <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-            </div>
-            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-            </div>
-            <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-            </div>
-        </div>
-        <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
-        </div>
-    </div>
-</x-layouts::app>
+
+<div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+
+    <h1 class="text-2xl font-bold">
+        Dashboard Studio Foto
+    </h1>
+
+    <div class="grid gap-4 md:grid-cols-3">
+
+    <a href="/categories" class="block rounded-xl border p-5 bg-blue-500">
+        <h2 class="font-bold text-white">Kategori</h2>
+        <p class="text-white">Kelola kategori foto</p>
+    </a>
+
+    <a href="/transactions" class="block rounded-xl border p-5 bg-green-500">
+        <h2 class="font-bold text-white">Transaksi</h2>
+        <p class="text-white">Kelola transaksi</p>
+    </a>
+
+    <a href="/customers" class="block rounded-xl border p-5 bg-purple-500">
+        <h2 class="font-bold text-white">Pelanggan</h2>
+        <p class="text-white">Data pelanggan</p>
+    </a>
+
+</div>
