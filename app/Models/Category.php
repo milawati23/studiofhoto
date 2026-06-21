@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Category extends Model
 {
     protected $fillable = [
-        'kode_transaksi',
-        'total',
-        'status'
+        'nama',
+        'deskripsi'
     ];
 }
