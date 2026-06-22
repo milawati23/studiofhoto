@@ -39,12 +39,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     // TRANSAKSI
-    Route::get('/transactions', [TransactionController::class, 'index'])
-        ->name('transactions');
+Route::get('/transactions', [TransactionController::class, 'index'])
+    ->name('transactions');
 
-    Route::post('/transactions', [TransactionController::class, 'store'])
-        ->name('transactions.store');
+Route::post('/transactions', [TransactionController::class, 'store'])
+    ->name('transactions.store');
 
+Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])
+    ->name('transactions.destroy');
 
     // NOTA PDF
     Route::get('/transactions/{id}/nota',

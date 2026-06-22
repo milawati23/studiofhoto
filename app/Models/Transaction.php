@@ -9,6 +9,8 @@ class Transaction extends Model
     protected $fillable = [
         'kode_transaksi',
         'total',
-        'status'
+        'status',
+        'duration',
+        'duration_unit'
     ];
 }

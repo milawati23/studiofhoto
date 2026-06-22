@@ -108,12 +108,13 @@
 
 
                             <button
-                            class="bg-red-500 text-white px-3 py-1 rounded">
+type="submit"
+onclick="return confirm('Yakin ingin menghapus transaksi ini?')"
+class="bg-red-500 text-white px-3 py-1 rounded">
 
-                                🗑 Hapus
+    🗑 Hapus
 
-                            </button>
-
+</button>
 
                         </form>
 

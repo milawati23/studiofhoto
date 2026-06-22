@@ -1,58 +1,8 @@
-<?php
-
-use Livewire\Component;
-use App\Models\Transaction;
-use App\Models\Payment;
-
-new class extends Component
-{
-    public $harga = 0;
-    public $jumlah = 1;
-    public $total = 0;
-    public $metode = 'Cash';
-
-
-    public function updated()
-    {
-        $this->total = (int) $this->harga * (int) $this->jumlah;
-    }
-
-
-    public function simpan()
-    {
-        $transaksi = Transaction::create([
-            'kode_transaksi' => 'TRX-' . rand(1000,9999),
-            'total' => $this->total,
-            'status' => 'paid',
-        ]);
-
-
-        Payment::create([
-            'transaction_id' => $transaksi->id,
-            'metode' => $this->metode,
-            'jumlah' => $this->total,
-        ]);
-
-
-        $this->harga = 0;
-        $this->jumlah = 1;
-        $this->total = 0;
-        $this->metode = 'Cash';
-
-
-        session()->flash('success', 'Transaksi berhasil disimpan');
-    }
-
-};
-?>
-
-
 <div>
 
     <h2 class="text-xl font-bold mb-4">
         Form Transaksi
     </h2>
-
 
     @if(session()->has('success'))
         <p class="text-green-600 mb-3">
@@ -60,14 +10,11 @@ new class extends Component
         </p>
     @endif
 
-
-
     <input
         type="number"
         wire:model.live="harga"
         placeholder="Harga"
         class="border p-2 rounded">
-
 
     <input
         type="number"
@@ -75,46 +22,81 @@ new class extends Component
         placeholder="Jumlah"
         class="border p-2 rounded">
 
+    <div class="mt-3">
 
-    <select
-        wire:model.live="metode"
-        class="border p-2 rounded">
+        <label class="font-bold block mb-1">
+            Durasi Foto
+        </label>
 
-        <option value="Cash">
-            Cash
-        </option>
+        <input
+            type="number"
+            wire:model.live="duration"
+            min="1"
+            class="border p-2 rounded">
 
-        <option value="Transfer">
-            Transfer
-        </option>
+        <select
+            wire:model.live="duration_unit"
+            class="border p-2 rounded">
 
-    </select>
+            <option value="menit">
+                Menit
+            </option>
 
+            <option value="jam">
+                Jam
+            </option>
 
+        </select>
 
-    <p>
+    </div>
+
+    <div class="mt-3">
+
+        <select
+            wire:model.live="metode"
+            class="border p-2 rounded">
+
+            <option value="Cash">
+                Cash
+            </option>
+
+            <option value="Transfer">
+                Transfer
+            </option>
+
+        </select>
+
+    </div>
+
+    <p class="mt-3">
         Harga: {{ $harga }}
     </p>
-
 
     <p>
         Jumlah: {{ $jumlah }}
     </p>
 
+    <p>
+        Durasi: {{ $duration }} {{ $duration_unit }}
+    </p>
 
-    <p class="mt-3 font-bold">
+    <p class="font-bold mt-3">
         Total: Rp {{ number_format($total) }}
     </p>
 
-
-
     <button
         wire:click="simpan"
+        wire:loading.attr="disabled"
         class="bg-green-500 text-white px-4 py-2 rounded">
 
-        Simpan Transaksi
+        <span wire:loading>
+            Menyimpan...
+        </span>
+
+        <span wire:loading.remove>
+            Simpan Transaksi
+        </span>
 
     </button>
-
 
 </div>

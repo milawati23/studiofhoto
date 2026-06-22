@@ -12,6 +12,9 @@ class TransactionForm extends Component
     public $total = 0;
     public $metode = 'Cash';
 
+    public $duration = 1;
+    public $duration_unit = 'jam';
+
 
     public function updatedHarga()
     {
@@ -39,7 +42,11 @@ class TransactionForm extends Component
 
             'total' => $this->total,
 
-            'status' => 'paid'
+            'status' => 'paid',
+
+            'duration' => $this->duration,
+
+            'duration_unit' => $this->duration_unit
 
         ]);
 
@@ -48,6 +55,9 @@ class TransactionForm extends Component
         $this->jumlah = 1;
         $this->total = 0;
         $this->metode = 'Cash';
+
+        $this->duration = 1;
+        $this->duration_unit = 'jam';
 
 
         session()->flash('success','Transaksi berhasil disimpan');
